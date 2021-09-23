@@ -44,8 +44,13 @@ RUN apt-get update && \
     libnss3 \ 
     lsb-release \ 
     xdg-utils \ 
-    wget && \
+    wget \
+    git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-    
+
+# Install mkdocs and plugins
 RUN pip install mkdocs-material mkdocs-macros-plugin mkdocs-page-pdf
+
+# Pre-install chrome
+RUN pyppeteer-install
